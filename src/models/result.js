@@ -3,8 +3,10 @@ const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
 
 const resultSchema= new Schema({
-    title: String,
-    owner: String,
+    positive: String,
+    negative: String,
+    neutral: String,
+    num: String,
     code: String
 });
 
