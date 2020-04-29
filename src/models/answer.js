@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const answerSchema= new Schema({
     answer: String,
-    question: String,
-    title: String
+    num: String,
+    code: String
 });
 
 const Answer = mongoose.model('answers',answerSchema);
