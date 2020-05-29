@@ -13,7 +13,7 @@ router.post('/intreviews',isAuthenticated,(req, res)=>{
 
 router.get('/intreviews',isAuthenticated,(req, res)=>{
     const {body} = req;
-    return Intreview.findOne({owner:body.owner})
+    return Intreview.find({owner:body.owner})
     .then(readedIntreview=>{res.status(200).json(readedIntreview)})
     .catch(err => {res.status(400).json(err)})
 });
@@ -28,12 +28,19 @@ router.patch('/intreviews',isAuthenticated,(req, res)=>{
 
 router.delete('/intreviews',isAuthenticated,(req, res)=>{
     const {body} = req;
-    return Intreview.findOneAndDelete({code:body.code},{
+    return Intreview.deleteMany({owner:body.owner},{
         useFindAndModify:false})
     .then(deletedIntreview=>{res.status(200).json()})
     .catch(err => {res.status(400).json(err)})
 });
 
+router.delete('/intreview',isAuthenticated,(req, res)=>{
+    const {body} = req;
+    return Intreview.findOneAndDelete({code:body.code},{
+        useFindAndModify:false})
+    .then(deletedIntreview=>{res.status(200).json()})
+    .catch(err => {res.status(400).json(err)})
+});
 
 function isAuthenticated(req, res, next){
     if  (req.isAuthenticated())

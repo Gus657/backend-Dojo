@@ -25,6 +25,13 @@ router.delete('/results',isAuthenticated,(req, res)=>{
     .catch(err => {res.status(400).json(err)})
 });
 
+router.delete('/result',isAuthenticated,(req, res)=>{
+    const {body} = req;
+    return Result.deleteOne({idResult:body.idResult},{
+        useFindAndModify:false})
+    .then(deletedResult=>{res.status(200).json()})
+    .catch(err => {res.status(400).json(err)})
+});
 function isAuthenticated(req, res, next){
     if  (req.isAuthenticated())
     {

@@ -6,7 +6,6 @@ const profileSchema= new Schema({
     user: String,
     name: String,
     lastName: String,
-    date: String,
     photo: String, 
 });
 
