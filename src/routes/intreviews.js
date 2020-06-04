@@ -28,7 +28,7 @@ router.patch('/intreviews',isAuthenticated,(req, res)=>{
 
 router.delete('/intreviews',isAuthenticated,(req, res)=>{
     const {body} = req;
-    return Intreview.deleteMany({owner:body.owner},{
+    return Intreview.deleteMany({owner:body.ownernodemo},{
         useFindAndModify:false})
     .then(deletedIntreview=>{res.status(200).json()})
     .catch(err => {res.status(400).json(err)})
